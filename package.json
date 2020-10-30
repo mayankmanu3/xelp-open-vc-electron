@@ -55,8 +55,13 @@
   "devDependencies": {
     "concurrently": "^5.0.0",
     "electron": "^7.1.0",
+<<<<<<< HEAD
     "electron-builder": "^22.9.1",
     "electron-installer-debian": "^3.1.0",
     "wait-on": "^3.3.0"
+=======
+    "wait-on": "^3.3.0",
+    "electron-builder": "^22.9.1"
+>>>>>>> 22cf2da3a590bdc05e0fe35da180e0b42ce80f05
   }
 }
