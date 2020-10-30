@@ -2,15 +2,18 @@
   "name": "react-electron",
   "version": "0.1.0",
   "description": "Simple boilerplate for developing an Electron app with React",
-  "author": "willjw3",
-  "build": {
-    "appId": "react.electron",
-    "win": {
-      "icon": "build/icon.png"
-    }
-  },
   "main": "public/electron.js",
   "homepage": "./",
+  "author": "mm <mayank.manu@xelpmoc.in>",
+  "build": {
+    "appId": "com.janez.electron-zoom-client",
+    "linux": {
+      "target": [
+        "deb"
+      ],
+      "category": "Utility"
+    }
+  },
   "private": true,
   "dependencies": {
     "cross-env": "^6.0.3",
@@ -24,11 +27,13 @@
   },
   "scripts": {
     "start-react": "react-scripts start",
+    "dist:linux": "electron-builder --linux",
     "build-react": "react-scripts build",
     "test-react": "react-scripts test --env=jsdom",
     "eject-react": "react-scripts eject",
     "build-electron": "electron-builder",
-    "build": "yarn build-react && yarn build-electron",
+    "build": "electron-packager . app --platform linux --arch x64 --out dist/",
+    "deb64": "electron-installer-debian --src dist/app-linux-x64/ --dest dist/installers/ --arch amd64",
     "start": "concurrently \"cross-env BROWSER=none yarn start-react\" \"wait-on http://localhost:3000 && electron .\"",
     "build-all": "electron-packager ./ --app-version 1.1.0 --platform all --out ./dist --overwrite"
   },
@@ -50,6 +55,8 @@
   "devDependencies": {
     "concurrently": "^5.0.0",
     "electron": "^7.1.0",
+    "electron-builder": "^22.9.1",
+    "electron-installer-debian": "^3.1.0",
     "wait-on": "^3.3.0"
   }
 }
